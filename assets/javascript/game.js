@@ -21,7 +21,7 @@ document.onkeyup = function(event) {
             alert("Game Over");
             var_loss = 0;
             var_win = 0;
-            var_guess_left = 10;
+            var_guess_left = 5;
             usertext.textContent = "";
         }
     }
