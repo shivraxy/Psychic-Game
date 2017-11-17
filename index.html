@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>
+		Psychic Game
+	</title>
+</head>
+<body>
+
+<h1> The Psychic Game </h1>
+
+<div> Guess what letter I'm thinking of </div>
+<div> wins: <span id ="win"></span></div>
+<div> Loses: <span id ="loss"></span></div>
+<div> Guesses Left: <span id ="guess_left"></span></div>
+<div> You guess so far: <span id="usertext"> </span> </div>
+</body>
+
+<script type="text/javascript">
+
+var var_loss=0;
+var var_win=0;
+var var_guess_left=5;
+var all_possible_chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+	assign_values();
+
+    document.onkeyup= function(event)
+    {
+        usertext.textContent = usertext.textContent+event.key+",";
+        random_char_position= Math.floor(Math.random()*all_possible_chars.length);
+        random_char=all_possible_chars.charAt(random_char_position).toLowerCase();
+		console.log(random_char_position+" "+random_char);
+    	
+    	if(random_char==event.key)
+    	{
+    		var_win =var_win+1;
+    		alert("Winner Winner !!!!");
+    	}
+    	else
+    	{
+    		var_loss=var_loss+1;
+    		var_guess_left = var_guess_left-1;
+    		if(var_guess_left==0)
+    		{
+    			alert("Game Over");
+    			var_loss=0;
+				var_win=0;
+				var_guess_left=10;
+				usertext.textContent="";
+			}	
+    	}
+
+			assign_values();
+    };
+
+function assign_values()
+{
+win.textContent=var_win;
+loss.textContent=var_loss;
+guess_left.textContent=var_guess_left;
+}
+
+</script>
+</html>
